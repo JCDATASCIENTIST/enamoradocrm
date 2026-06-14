@@ -25,6 +25,11 @@
 
 - None
 
+## GitHub
+
+- Initial commit pushed to `main` at https://github.com/JCDATASCIENTIST/enamoradocrm
+- Set Vercel **Root Directory** to `app/` when linking the repo
+
 ## Path B audit (integrations)
 
 - `notifyNewProspect` now includes `assigned_to_name` from profiles lookup
