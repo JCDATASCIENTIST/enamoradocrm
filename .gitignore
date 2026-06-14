@@ -1,0 +1,22 @@
+# OS
+.DS_Store
+
+# Env and secrets
+.env
+.env*.local
+
+# App dependencies and build output
+app/node_modules/
+app/.next/
+app/out/
+app/build/
+app/.vercel/
+app/*.tsbuildinfo
+app/next-env.d.ts
+
+# Supabase local
+app/supabase/.branches
+app/supabase/.temp
+
+# IDE
+.claude/
