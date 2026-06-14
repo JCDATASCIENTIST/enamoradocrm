@@ -4,7 +4,7 @@
 |--------|----------|-------|-------|
 | GitHub | | Client / Consultant | Repo access |
 | Vercel | | Client | Production + preview |
-| Supabase | | Client | Project ref: _______ |
+| Supabase | **Enamorado CRM** | Client | Project ref: `tvijtuivauumajbkpodj` |
 | SiteGround DNS | | Client | `crm.enamoradoinsurancefl.com` |
 | Zapier | | Client | Webhook URLs in Vercel env |
 

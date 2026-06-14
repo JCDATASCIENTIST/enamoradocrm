@@ -23,18 +23,29 @@ Edit contact details in [`lib/site.ts`](lib/site.ts):
 - Phone, email, office address
 - Confirm `url` and `crmUrl`
 
-### Contact form (`/contact`)
+### Contact form (`/en/contact`, `/es/contact`)
 
-The form on `/contact` is a Next.js Server Action (`app/contact/contact-form.tsx` + `lib/contact-action.ts`). It validates input, rejects obvious SSN / full-MBI / full-Medicaid-ID patterns, and forwards to Zapier if `WEBSITE_CONTACT_WEBHOOK` is set.
+The form uses a Next.js Server Action (`app/[locale]/contact/contact-form.tsx` + `lib/contact-action.ts`). It validates input, rejects obvious SSN / full-MBI / full-Medicaid-ID patterns, then delivers the lead by **Brevo email** (recommended) or an optional Zapier webhook fallback.
+
+**Launch setup (Brevo free):**
+
+1. Sign up at [brevo.com](https://www.brevo.com) (free tier).
+2. **Senders & IP** → verify `hello@enamoradoinsurancecompany.com`.
+3. **SMTP & API** → create an API key.
+4. Add to Vercel **website** project → Settings → Environment Variables (Production):
 
 ```env
-# .env.local (website) — optional. If unset, the form returns success silently
-# and submissions are not forwarded anywhere. Configure once the agency has
-# a Zapier Catch-Hook URL for prospect intake.
-WEBSITE_CONTACT_WEBHOOK=https://hooks.zapier.com/hooks/catch/...
+BREVO_API_KEY=xkeysib-...
+CONTACT_NOTIFY_EMAIL=hello@enamoradoinsurancecompany.com
+BREVO_SENDER_EMAIL=hello@enamoradoinsurancecompany.com
+BREVO_SENDER_NAME=Enamorado Insurance
 ```
 
-The Zap receives a JSON body with `event: "website_contact_request"`, `name`, `phone`, `email`, `message`, `submitted_at`, and `source`.
+5. Redeploy the website, then submit a test on `/en/contact`.
+
+If `BREVO_API_KEY` is unset, the action falls back to `WEBSITE_CONTACT_WEBHOOK` (Zapier). If neither is set, the form still returns success locally but **no email is sent**.
+
+See [`.env.local.example`](.env.local.example) for all variables.
 
 ## Deploy on Vercel
 

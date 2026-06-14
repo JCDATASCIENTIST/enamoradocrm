@@ -2,7 +2,8 @@
 
 ## Pre-launch (Week 17–18)
 
-- [ ] All migrations 0001–0004 applied on production Supabase
+- [x] All migrations 0001–0004 applied on production Supabase (`tvijtuivauumajbkpodj`)
+- [ ] **First admin user** (deferred) — Supabase invite + SQL role update; see `STATUS.md`
 - [ ] RLS smoke tests passed ([docs/rls-smoke-tests.md](../docs/rls-smoke-tests.md))
 - [ ] `CRON_SECRET` set; cron tested once
 - [ ] Zapier webhooks configured (optional) with Path B field review

@@ -1,39 +1,49 @@
 'use server';
 
-// Server action for the public contact form on enamoradoinsurancefl.com.
-// Forwards submissions to a Zapier Catch-Hook webhook (configurable via env)
-// so the agency can route them into Slack, email, the CRM, or anywhere.
-//
-// If WEBSITE_CONTACT_WEBHOOK is unset, the action still succeeds — the form
-// submission is acknowledged but no data leaves the site. This keeps the
-// deploy working before the agency has its Zap configured.
-//
-// IMPORTANT: This is the public marketing site. Path B (no PHI) does not
-// apply because we are not the system of record for any client data — the
-// submitter is a *prospect* who has not yet become a client. We still do
-// not log full SSN / MBI / Medicaid IDs and we forward only what the
-// prospect typed in the form.
+import { sendContactNotification } from '@/lib/brevo';
+import { isLocale, type Locale } from '@/lib/i18n/config';
+import { getDictionary } from '@/lib/i18n/get-dictionary';
 
 export type ContactFormState = { error?: string; success?: boolean };
+
+function resolveLocale(raw: string): Locale {
+  return isLocale(raw) ? raw : 'en';
+}
+
+async function forwardToWebhook(
+  webhook: string,
+  payload: Record<string, string | null>,
+): Promise<boolean> {
+  try {
+    const res = await fetch(webhook, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    return res.ok;
+  } catch {
+    return false;
+  }
+}
 
 export async function submitContactForm(
   _prev: ContactFormState,
   formData: FormData,
 ): Promise<ContactFormState> {
+  const locale = resolveLocale(String(formData.get('locale') ?? 'en'));
+  const errors = getDictionary(locale).formErrors;
+
   const name = String(formData.get('name') ?? '').trim();
   const phone = String(formData.get('phone') ?? '').trim();
   const email = String(formData.get('email') ?? '').trim();
   const message = String(formData.get('message') ?? '').trim();
 
-  if (!name) return { error: 'Please enter your name.' };
-  if (!phone && !email) {
-    return { error: 'Please share a phone number or email so we can reach you.' };
-  }
+  if (!name) return { error: errors.nameRequired };
+  if (!phone && !email) return { error: errors.contactRequired };
   if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    return { error: 'That email address does not look right.' };
+    return { error: errors.emailInvalid };
   }
 
-  // Reject obvious PHI so we never forward SSN / MBI / Medicaid IDs to Zapier.
   const phiPattern = /(?:\d{3}-\d{2}-\d{4}|\d{9})|(?=[A-Za-z0-9]{11})(?=.*[A-Za-z])(?=.*\d)[A-Za-z0-9]{11}/;
   for (const [field, value] of [
     ['name', name],
@@ -42,42 +52,44 @@ export async function submitContactForm(
     ['message', message],
   ] as const) {
     if (phiPattern.test(value)) {
-      return {
-        error:
-          'Your message looks like it contains a Social Security Number or full Medicare/Medicaid ID. Please remove it and resubmit — for your protection we never transmit those numbers through web forms.',
-      };
+      return { error: errors.phiDetected };
     }
-    if (field === 'name' && value.length > 120) return { error: 'Name is too long.' };
-    if (field === 'phone' && value.length > 40) return { error: 'Phone is too long.' };
-    if (field === 'email' && value.length > 200) return { error: 'Email is too long.' };
-    if (field === 'message' && value.length > 2000) return { error: 'Message is too long.' };
+    if (field === 'name' && value.length > 120) return { error: errors.nameTooLong };
+    if (field === 'phone' && value.length > 40) return { error: errors.phoneTooLong };
+    if (field === 'email' && value.length > 200) return { error: errors.emailTooLong };
+    if (field === 'message' && value.length > 2000) return { error: errors.messageTooLong };
   }
 
-  const webhook = process.env.WEBSITE_CONTACT_WEBHOOK;
-  if (!webhook) {
-    // No webhook configured — pretend success so the form still works.
+  const submittedAt = new Date().toISOString();
+  const webhookPayload = {
+    event: 'website_contact_request',
+    name,
+    phone: phone || null,
+    email: email || null,
+    message: message || null,
+    submitted_at: submittedAt,
+    source: `enamoradoinsurancecompany.com/${locale}/contact`,
+    locale,
+  };
+
+  if (process.env.BREVO_API_KEY) {
+    const sent = await sendContactNotification({
+      name,
+      phone,
+      email,
+      message,
+      locale,
+      submittedAt,
+    });
+    if (!sent) return { error: errors.sendFailed };
     return { success: true };
   }
 
-  try {
-    const res = await fetch(webhook, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        event: 'website_contact_request',
-        name,
-        phone: phone || null,
-        email: email || null,
-        message: message || null,
-        submitted_at: new Date().toISOString(),
-        source: 'enamoradoinsurancefl.com/contact',
-      }),
-    });
-    if (!res.ok) {
-      return { error: 'We could not send your message. Please call us instead.' };
-    }
-  } catch {
-    return { error: 'We could not reach our inbox. Please call us instead.' };
+  const webhook = process.env.WEBSITE_CONTACT_WEBHOOK;
+  if (webhook) {
+    const ok = await forwardToWebhook(webhook, webhookPayload);
+    if (!ok) return { error: errors.inboxFailed };
+    return { success: true };
   }
 
   return { success: true };

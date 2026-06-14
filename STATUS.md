@@ -42,6 +42,45 @@
 - `npm run build` (CRM) — pass (contact detail bundle grew 2.82 kB → 4.4 kB; expected, due to inline enrollments/commissions panels)
 - `npm run build` (website) — pass (contact page bundle grew 142 B → 1.19 kB; expected, server-action form)
 
+## Infrastructure (2026-06-14)
+
+**Supabase (production CRM):** **Enamorado CRM** — ref `tvijtuivauumajbkpodj`  
+URL: `https://tvijtuivauumajbkpodj.supabase.co`  
+Migrations **0001–0004 applied** (2026-06-14). RLS enabled on all 8 tables.
+
+| Project | Ref | Use |
+|---------|-----|-----|
+| **Enamorado CRM** | `tvijtuivauumajbkpodj` | Production CRM |
+| thehub-business | `ghbdtysszptnykfrrmqx` | **Do not use** for Enamorado |
+
+**First admin:** **Deferred** — not required to deploy the website or finish Vercel setup. The CRM login page will work, but **no one can sign in** until this is done (5 minutes when ready).
+
+When Dalkys is ready, in [Enamorado CRM → Authentication](https://supabase.com/dashboard/project/tvijtuivauumajbkpodj/auth/users):
+
+1. **Invite user** → `hello@enamoradoinsurancefl.com`
+2. After they set a password, open **SQL Editor** and run:
+
+```sql
+update public.profiles
+set role = 'admin', full_name = 'Dalkys Enamorado'
+where email = 'hello@enamoradoinsurancefl.com';
+```
+
+**Alternative (after first admin exists):** an existing admin can invite more users from **CRM → Admin → Users** (`/admin/users`) — no dashboard needed for additional accounts.
+
+**Vercel — Website:** **Live**  
+- Project: `enamorado-insurance-website`  
+- Production: https://enamorado-insurance-website.vercel.app  
+- Dashboard: https://vercel.com/joelcastillomarketingexpert-7985s-projects/enamorado-insurance-website  
+- Custom domains added (DNS pending at SiteGround): `enamoradoinsurancefl.com`, `www.enamoradoinsurancefl.com`  
+- SiteGround records: `@` → A `76.76.21.21`, `www` → A `76.76.21.21` (per Vercel CLI output)
+
+**Vercel — CRM:** not deployed yet
+
+**Figma:** [Enamorado Insurance — Website](https://www.figma.com/design/gsZgq97yzeH48p59j45cs1)
+
+**Website copy:** Dalkys Enamorado broker messaging in `website/lib/site.ts`.
+
 ## Blocked
 
 - v2 work is **not blocked** but is gated on the items below in "Questions for Joel".
