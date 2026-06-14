@@ -14,6 +14,14 @@ app/.vercel/
 app/*.tsbuildinfo
 app/next-env.d.ts
 
+website/node_modules/
+website/.next/
+website/out/
+website/build/
+website/.vercel/
+website/*.tsbuildinfo
+website/next-env.d.ts
+
 # Supabase local
 app/supabase/.branches
 app/supabase/.temp

@@ -8,14 +8,15 @@ Custom CRM for **Enamorado Insurance Company** — Medicare/Medicaid agency oper
 |-------|------------|
 | App | Next.js 14, React 18, TypeScript, Tailwind |
 | Data / Auth | Supabase (Postgres + RLS) |
-| Hosting | Vercel (`crm.enamoradoinsurancecompany.com`) |
+| Hosting | Vercel — website on apex domain, CRM on `crm.` subdomain |
 | Automations | Zapier webhooks (HIPAA Path B payloads) |
 
 ## Repository layout
 
 | Path | Purpose |
 |------|---------|
-| [`app/`](app/) | Next.js application — **Vercel root directory** |
+| [`website/`](website/) | Public marketing site — **Vercel root** for apex domain |
+| [`app/`](app/) | CRM application — **Vercel root** for `crm.` subdomain |
 | [`workflows/`](workflows/) | Operational runbooks (renewals, enrollments, launch) |
 | [`workstream-b/`](workstream-b/) | Commissions, renewals, Zapier specs |
 | [`happycapy/`](happycapy/) | Happy Capy.ai prompts, sessions, and automations |
@@ -36,7 +37,7 @@ npm run dev
 
 Apply SQL migrations in order from `app/supabase/migrations/` (0001–0004).
 
-See [`app/README.md`](app/README.md) for full setup and deploy instructions.
+See [`app/README.md`](app/README.md) for CRM setup and [`docs/deployment-domains.md`](docs/deployment-domains.md) for dual-domain Vercel + SiteGround DNS.
 
 ## HIPAA
 

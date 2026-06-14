@@ -3,26 +3,31 @@
 ```mermaid
 flowchart LR
   Browser[User browser]
-  Vercel[Vercel Next.js 14]
+  AgentBrowser[Agent browser]
+  VercelWeb[Vercel Website]
+  VercelCRM[Vercel CRM Next.js 14]
   Supabase[Supabase Auth + Postgres RLS]
   Zapier[Zapier automations]
   SiteGround[SiteGround DNS]
 
-  Browser --> Vercel
-  Vercel --> Supabase
-  Vercel -->|cron daily| Zapier
-  SiteGround -->|crm subdomain| Vercel
+  Browser --> SiteGround
+  AgentBrowser --> SiteGround
+  SiteGround -->|apex_and_www| VercelWeb
+  SiteGround -->|crm_subdomain| VercelCRM
+  VercelCRM --> Supabase
+  VercelCRM -->|cron daily| Zapier
 ```
 
 ## Components
 
 | Layer | Technology |
 |-------|------------|
-| Frontend | Next.js App Router, Tailwind |
-| Hosting | Vercel |
-| Database + Auth | Supabase |
-| Automations | Zapier (webhooks, Path B payloads) |
-| DNS | SiteGround → `crm.enamoradoinsurancecompany.com` |
+| Public website | Next.js 14, Tailwind — `website/` |
+| CRM app | Next.js App Router, Tailwind — `app/` |
+| Hosting | Vercel (two projects, one repo) |
+| Database + Auth | Supabase (CRM only) |
+| Automations | Zapier (CRM webhooks, Path B payloads) |
+| DNS | SiteGround → apex + `www` → website; `crm` → CRM |
 
 ## Security
 
