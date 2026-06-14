@@ -4,8 +4,8 @@ Enamorado uses **two Vercel projects** from one GitHub repo:
 
 | Vercel project | Root directory | Production domain |
 |----------------|----------------|-------------------|
-| Enamorado Website | `website` | `enamoradoinsurancecompany.com` + `www.enamoradoinsurancecompany.com` |
-| Enamorado CRM | `app` | `crm.enamoradoinsurancecompany.com` |
+| Enamorado Website | `website` | `enamoradoinsurancefl.com` + `www.enamoradoinsurancefl.com` |
+| Enamorado CRM | `app` | `crm.enamoradoinsurancefl.com` |
 
 DNS is managed at **SiteGround** (or your registrar). SSL is issued by Vercel after domains are verified.
 
@@ -18,8 +18,8 @@ DNS is managed at **SiteGround** (or your registrar). SSL is issued by Vercel af
 3. Framework: Next.js (auto-detected)
 4. Deploy once on the default `*.vercel.app` URL and verify pages load.
 5. **Settings → Domains** → add:
-   - `enamoradoinsurancecompany.com`
-   - `www.enamoradoinsurancecompany.com`
+   - `enamoradoinsurancefl.com`
+   - `www.enamoradoinsurancefl.com`
 6. Set `www` to redirect to apex (or vice versa — pick one canonical host in Vercel).
 
 No Supabase or cron env vars are required for the marketing site.
@@ -31,9 +31,9 @@ No Supabase or cron env vars are required for the marketing site.
 1. Import the **same repo** again (second Vercel project).
 2. **Root Directory:** `app`
 3. Add all CRM env vars (see [deployment-staging.md](./deployment-staging.md)).
-4. **Settings → Domains** → add `crm.enamoradoinsurancecompany.com` only.
+4. **Settings → Domains** → add `crm.enamoradoinsurancefl.com` only.
 
-Set `NEXT_PUBLIC_APP_URL=https://crm.enamoradoinsurancecompany.com` in production.
+Set `NEXT_PUBLIC_APP_URL=https://crm.enamoradoinsurancefl.com` in production.
 
 ---
 
@@ -41,7 +41,7 @@ Set `NEXT_PUBLIC_APP_URL=https://crm.enamoradoinsurancecompany.com` in productio
 
 Vercel shows the exact values after you add each domain. Typical setup:
 
-### Apex domain (`enamoradoinsurancecompany.com`)
+### Apex domain (`enamoradoinsurancefl.com`)
 
 **Option A — A record (common on SiteGround)**
 
@@ -75,14 +75,14 @@ Point this CNAME to the **CRM** Vercel project’s target (shown in that project
 
 ### Website
 
-- [ ] https://enamoradoinsurancecompany.com loads home page
+- [ ] https://enamoradoinsurancefl.com loads home page
 - [ ] https://www redirects to canonical host
 - [ ] `/services`, `/about`, `/contact` work
-- [ ] “Agent login” opens `https://crm.enamoradoinsurancecompany.com/login`
+- [ ] “Agent login” opens `https://crm.enamoradoinsurancefl.com/login`
 
 ### CRM
 
-- [ ] https://crm.enamoradoinsurancecompany.com/login works
+- [ ] https://crm.enamoradoinsurancefl.com/login works
 - [ ] Apex domain does **not** serve CRM (only subdomain)
 - [ ] Cron and Zapier env vars set on CRM project only
 

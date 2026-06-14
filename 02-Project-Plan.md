@@ -43,7 +43,7 @@ Phase 2 is the bridge between "working software" and "production-ready software.
 With a stable Workstream A foundation and real user feedback in hand, Phase 3 layers in commission tracking by policy/carrier/writing agent, renewal tracking with effective and renewal date workflows, online enrollment activity recording, and the selected Zapier automations for reminders and notifications. This is the most carrier-specific and integration-heavy phase, so a portion of Week 13 is reserved for confirming integration scope with the client before committing builds.
 
 ### Phase 4 — Production Launch & Handoff (Week 18)
-The final week covers production deployment to `crm.enamoradoinsurancecompany.com`, DNS cutover, final security review (RLS audit, key rotation, SSL enforcement check), final user acceptance testing, a launch-day support window, and the formal handoff packet (admin documentation, credential vault, runbook, and a 30-day post-launch support agreement).
+The final week covers production deployment to `crm.enamoradoinsurancefl.com`, DNS cutover, final security review (RLS audit, key rotation, SSL enforcement check), final user acceptance testing, a launch-day support window, and the formal handoff packet (admin documentation, credential vault, runbook, and a 30-day post-launch support agreement).
 
 ---
 
@@ -80,7 +80,7 @@ The architecture is intentionally boring — proven tools wired together cleanly
 
 **Automation:** Zapier handles selected reminders, outreach notifications, and integrations with external enrollment tools. Zapier's task-based billing is owned by the client, not the consultant.
 
-**Domain & DNS:** `crm.enamoradoinsurancecompany.com` configured via SiteGround DNS pointing to Vercel.
+**Domain & DNS:** `crm.enamoradoinsurancefl.com` configured via SiteGround DNS pointing to Vercel.
 
 **Compliance posture:** If Medicare or Medicaid identifiers will be stored, the project must operate under Supabase's HIPAA-compliant configuration with a signed BAA. The HIPAA decision is finalized in Phase 0 and shapes everything downstream — database design, network policies, audit logging, and Zapier data flow.
 

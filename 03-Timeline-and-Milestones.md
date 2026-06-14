@@ -54,7 +54,7 @@ The timeline below assumes a Monday start in Week 1. Replace "W1" through "W18" 
 
 ### Phase 4 — Production Launch & Handoff
 
-**Week 18** — Final UAT with sign-off checklist; DNS cutover to `crm.enamoradoinsurancecompany.com`; production deploy; 4-hour launch-day on-call window; handoff packet delivered (architecture diagram, admin guide, credential vault index, change log, 30-day support terms). *Checkpoint 6 — Payment Milestone 5 due (15%). 30-day post-launch support begins.*
+**Week 18** — Final UAT with sign-off checklist; DNS cutover to `crm.enamoradoinsurancefl.com`; production deploy; 4-hour launch-day on-call window; handoff packet delivered (architecture diagram, admin guide, credential vault index, change log, 30-day support terms). *Checkpoint 6 — Payment Milestone 5 due (15%). 30-day post-launch support begins.*
 
 ---
 
@@ -67,7 +67,7 @@ The timeline below assumes a Monday start in Week 1. Replace "W1" through "W18" 
 | 3 | Workstream A MVP | End W10 | Full Workstream A feature-complete on staging | 20% |
 | 4 | Workstream A Prod-Ready | End W12 | Training complete, parallel-run feedback resolved | — |
 | 5 | Workstream B Feature-Complete | End W17 | Commissions + renewals + enrollment + automations on staging | 25% |
-| 6 | Production Launch | End W18 | Live on `crm.enamoradoinsurancecompany.com`, handoff packet delivered | 15% |
+| 6 | Production Launch | End W18 | Live on `crm.enamoradoinsurancefl.com`, handoff packet delivered | 15% |
 
 ---
 

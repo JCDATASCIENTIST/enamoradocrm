@@ -29,7 +29,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
           <Link href="/dashboard" className="block">
             <Image
               src="/enamorado-logo.jpg"
-              alt="Enamorado Health Services"
+              alt="Enamorado Insurance"
               width={1417}
               height={1417}
               priority

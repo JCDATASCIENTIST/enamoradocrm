@@ -62,7 +62,7 @@ The recommended stack for this project is:
 | Domain and DNS | SiteGround if the domain is purchased there | Can manage the domain and DNS records, including subdomain routing. |
 
 ## Hosting and Deployment
-The recommended architecture is to use SiteGround for domain registration or DNS management and host the CRM application on a subdomain such as `crm.enamoradoinsurancecompany.com`. The application code should be maintained in GitHub, deployed through Vercel, and connected to Supabase for database, authentication, and storage services.
+The recommended architecture is to use SiteGround for domain registration or DNS management and host the CRM application on a subdomain such as `crm.enamoradoinsurancefl.com`. The application code should be maintained in GitHub, deployed through Vercel, and connected to Supabase for database, authentication, and storage services.
 
 ## Security and Compliance
 Because the CRM is expected to store Medicare or Medicaid identifiers, plan information, and other sensitive client data, the system should be designed with strong privacy and security controls from the start. Supabase documents note that HIPAA-regulated use requires a signed Business Associate Agreement, HIPAA project configuration, and additional security controls such as SSL enforcement, network restrictions, and related compliance measures.

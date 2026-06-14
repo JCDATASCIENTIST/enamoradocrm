@@ -28,10 +28,13 @@ export function CommissionForm({
   commission,
   contacts,
   agents,
+  defaultContactId,
 }: {
   commission?: Commission;
   contacts: ContactOption[];
   agents: AgentOption[];
+  /** When creating from a contact detail page, pre-select the contact. */
+  defaultContactId?: string;
 }) {
   const action = commission
     ? updateCommission.bind(null, commission.id)
@@ -43,7 +46,12 @@ export function CommissionForm({
       {!commission && (
         <label className="block text-sm">
           <span className="text-slate-700">Contact</span>
-          <Select name="contact_id" required className="mt-1">
+          <Select
+            name="contact_id"
+            required
+            defaultValue={defaultContactId ?? ''}
+            className="mt-1"
+          >
             <option value="">Select contact…</option>
             {contacts.map((c) => (
               <option key={c.id} value={c.id}>

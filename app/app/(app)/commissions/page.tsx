@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { requireProfile } from '@/lib/auth/session';
 import { listCommissions } from '@/lib/commissions/queries';
+import { listAgentsForAssignment } from '@/lib/contacts/queries';
 import { fullName } from '@/lib/format';
 import { Button } from '@/components/ui/button';
 import { Pager } from '@/components/ui/pager';
@@ -14,7 +15,11 @@ export default async function CommissionsPage({ searchParams }: PageProps) {
   const profile = await requireProfile();
   const status = (searchParams.status as CommissionStatus | 'all' | undefined) ?? 'all';
   const page = searchParams.page ? Math.max(1, Number(searchParams.page)) : 1;
-  const { rows, total, pageSize } = await listCommissions({ status }, page);
+  const [{ rows, total, pageSize }, agents] = await Promise.all([
+    listCommissions({ status }, page),
+    listAgentsForAssignment(),
+  ]);
+  const agentLookup = new Map(agents.map((a) => [a.id, a.full_name ?? a.email]));
 
   const totalPending = rows.filter((r) => r.status === 'pending').reduce((s, r) => s + (Number(r.amount) || 0), 0);
   const totalPaid = rows.filter((r) => r.status === 'paid').reduce((s, r) => s + (Number(r.amount) || 0), 0);
@@ -64,6 +69,7 @@ export default async function CommissionsPage({ searchParams }: PageProps) {
             <tr>
               <th className="px-4 py-2">Contact</th>
               <th className="px-4 py-2">Carrier</th>
+              <th className="px-4 py-2">Writing agent</th>
               <th className="px-4 py-2">Amount</th>
               <th className="px-4 py-2">Status</th>
               <th className="px-4 py-2">Payment</th>
@@ -78,14 +84,17 @@ export default async function CommissionsPage({ searchParams }: PageProps) {
                   </Link>
                 </td>
                 <td className="px-4 py-2 text-slate-600">{r.carrier ?? '—'}</td>
+                <td className="px-4 py-2 text-slate-600">
+                  {r.writing_agent_id ? agentLookup.get(r.writing_agent_id) ?? '—' : '—'}
+                </td>
                 <td className="px-4 py-2 text-slate-900">{r.amount != null ? `$${Number(r.amount).toFixed(2)}` : '—'}</td>
-                <td className="px-4 py-2 text-slate-600">{r.status}</td>
+                <td className="px-4 py-2 text-slate-600 capitalize">{r.status}</td>
                 <td className="px-4 py-2 text-slate-600">{r.payment_date ?? '—'}</td>
               </tr>
             ))}
             {rows.length === 0 && (
               <tr>
-                <td colSpan={5} className="px-4 py-10 text-center text-slate-500">
+                <td colSpan={6} className="px-4 py-10 text-center text-slate-500">
                   No commissions yet.
                 </td>
               </tr>

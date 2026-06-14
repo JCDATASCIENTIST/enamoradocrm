@@ -60,7 +60,7 @@ export default async function DashboardPage() {
     <div className="mx-auto max-w-6xl">
       <div className="mb-6">
         <h1 className="text-2xl font-semibold text-slate-900">
-          Welcome back, {profile.full_name ?? profile.email.split('@')[0]}.
+          Welcome back, {profile.full_name ?? profile.email}.
         </h1>
         <p className="mt-1 text-sm text-slate-500">
           {profile.role === 'admin'

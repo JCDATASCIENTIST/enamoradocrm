@@ -11,7 +11,7 @@
 
 ## DNS and Vercel
 
-- [ ] `crm.enamoradoinsurancecompany.com` CNAME to Vercel
+- [ ] `crm.enamoradoinsurancefl.com` CNAME to Vercel
 - [ ] Production env vars match staging
 - [ ] SSL certificate active
 

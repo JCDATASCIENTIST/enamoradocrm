@@ -44,7 +44,7 @@
 
 ## Slide 3 — The project in one sentence
 
-**On the slide:** "One CRM, built in two coordinated workstreams, delivered in 18 weeks, deployed to crm.enamoradoinsurancecompany.com."
+**On the slide:** "One CRM, built in two coordinated workstreams, delivered in 18 weeks, deployed to crm.enamoradoinsurancefl.com."
 
 **Speaker notes:** Reframe the scope at the highest level. Don't read it — say it conversationally. This is the line you want them to remember when their cousin asks what they're paying for.
 

@@ -12,7 +12,7 @@ export default function LoginPage({
         <div className="mb-6 flex flex-col items-center text-center">
           <Image
             src="/enamorado-logo.jpg"
-            alt="Enamorado Health Services"
+            alt="Enamorado Insurance"
             width={1417}
             height={1417}
             priority

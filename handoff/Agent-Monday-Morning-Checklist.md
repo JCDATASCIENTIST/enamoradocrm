@@ -4,7 +4,7 @@ One-page routine for insurance agents using Enamorado CRM.
 
 ## Before clients (15 minutes)
 
-- [ ] Log in at `crm.enamoradoinsurancecompany.com`
+- [ ] Log in at `crm.enamoradoinsurancefl.com`
 - [ ] Open **Follow-ups** — work **Overdue** first, then **Today**
 - [ ] Open **Pipeline** — move cards that advanced since Friday
 - [ ] Check **Renewals → Due (7 days)** for any policy renewals this week

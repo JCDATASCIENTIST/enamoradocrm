@@ -32,3 +32,17 @@ export async function listEnrollments(
     pageSize,
   };
 }
+
+/** Enrollments attached to a single contact. Capped at 20 — the contact
+ * detail page shows "see all" if more exist. */
+export async function listEnrollmentsForContact(contactId: string, limit = 20) {
+  const supabase = createClient();
+  const { data, error, count } = await supabase
+    .from('enrollment_activities')
+    .select('id, status, started_at, completed_at, external_ref, description', { count: 'exact' })
+    .eq('contact_id', contactId)
+    .order('started_at', { ascending: false })
+    .limit(limit);
+  if (error) throw error;
+  return { rows: data ?? [], total: count ?? 0 };
+}

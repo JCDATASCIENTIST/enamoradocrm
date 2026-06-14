@@ -4,7 +4,11 @@ import { listAgentsForAssignment } from '@/lib/contacts/queries';
 import { createClient } from '@/lib/supabase/server';
 import { CommissionForm } from '../_components/commission-form';
 
-export default async function NewCommissionPage() {
+interface PageProps {
+  searchParams: { contact_id?: string };
+}
+
+export default async function NewCommissionPage({ searchParams }: PageProps) {
   await requireProfile();
   const agents = await listAgentsForAssignment();
   const supabase = createClient();
@@ -20,7 +24,11 @@ export default async function NewCommissionPage() {
         ← Commissions
       </Link>
       <h1 className="mt-2 text-2xl font-semibold text-slate-900">New commission</h1>
-      <CommissionForm contacts={contacts ?? []} agents={agents} />
+      <CommissionForm
+        contacts={contacts ?? []}
+        agents={agents}
+        defaultContactId={searchParams.contact_id}
+      />
     </div>
   );
 }

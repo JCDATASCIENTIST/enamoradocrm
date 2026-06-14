@@ -21,7 +21,7 @@ This Statement of Work governs the design, development, deployment, and delivery
 
 Provider will deliver the services and deliverables defined in `02-Project-Plan.md`, summarized as:
 
-A secure, multi-user CRM web application; client and prospect record management; sales pipeline with stages New, Requested, In Progress, and Done; notes, issues, and follow-up tracking; filtering, print views, and CSV exports; commission tracking and reporting; renewal tracking with reminder workflows; enrollment workflow support; selected Zapier automations; production deployment to `crm.enamoradoinsurancecompany.com`; written admin and user documentation; live training sessions (recorded); and a 30-day post-launch support window.
+A secure, multi-user CRM web application; client and prospect record management; sales pipeline with stages New, Requested, In Progress, and Done; notes, issues, and follow-up tracking; filtering, print views, and CSV exports; commission tracking and reporting; renewal tracking with reminder workflows; enrollment workflow support; selected Zapier automations; production deployment to `crm.enamoradoinsurancefl.com`; written admin and user documentation; live training sessions (recorded); and a 30-day post-launch support window.
 
 Anything not listed in `01-Project-Scope.md` is out of scope and requires a written Change Order (see §10).
 

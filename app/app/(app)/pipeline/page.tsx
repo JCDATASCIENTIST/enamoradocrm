@@ -1,5 +1,6 @@
 import { requireProfile, canWrite } from '@/lib/auth/session';
 import { listPipelineContacts, listAgentsForAssignment } from '@/lib/contacts/queries';
+import { todayInAppTz } from '@/lib/format';
 import { PipelineBoard } from './_components/pipeline-board';
 import { PipelineFilters } from './_components/pipeline-filters';
 import type { ContactType } from '@/types/database.types';
@@ -17,7 +18,7 @@ export default async function PipelinePage({ searchParams }: PageProps) {
     assigned_to: searchParams.assigned_to ?? 'all',
   };
 
-  const cards = await listPipelineContacts(filters);
+  const [cards] = await Promise.all([listPipelineContacts(filters)]);
   const agentNames = Object.fromEntries(agents.map((a) => [a.id, a.full_name ?? a.email]));
 
   return (
@@ -40,6 +41,7 @@ export default async function PipelinePage({ searchParams }: PageProps) {
         canWrite={canWrite(profile.role)}
         userId={profile.id}
         isAdmin={profile.role === 'admin'}
+        todayInAppTz={todayInAppTz()}
       />
 
       {cards.length >= 200 && (

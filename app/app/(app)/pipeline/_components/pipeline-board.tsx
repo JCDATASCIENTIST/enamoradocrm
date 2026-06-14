@@ -21,12 +21,15 @@ export function PipelineBoard({
   canWrite,
   userId,
   isAdmin,
+  todayInAppTz,
 }: {
   cards: PipelineCard[];
   agentNames: Record<string, string>;
   canWrite: boolean;
   userId: string;
   isAdmin: boolean;
+  /** Pre-computed YYYY-MM-DD "today" in APP_TZ (matches the follow-ups page). */
+  todayInAppTz: string;
 }) {
   const router = useRouter();
   const [pending, startTransition] = useTransition();
@@ -62,8 +65,7 @@ export function PipelineBoard({
     {} as Record<PipelineStage, PipelineCard[]>,
   );
 
-  // Today in browser TZ — good-enough for the "Overdue" badge on the kanban.
-  const today = new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+  const today = todayInAppTz;
 
   return (
     <>

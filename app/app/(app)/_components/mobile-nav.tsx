@@ -29,7 +29,7 @@ export function MobileNav({
         <Link href="/dashboard" onClick={() => setOpen(false)} className="flex items-center">
           <Image
             src="/enamorado-logo.jpg"
-            alt="Enamorado Health Services"
+            alt="Enamorado Insurance"
             width={1417}
             height={1417}
             priority

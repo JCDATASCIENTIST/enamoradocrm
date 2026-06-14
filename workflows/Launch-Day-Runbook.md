@@ -2,7 +2,7 @@
 
 Hour-by-hour sequence for production launch of Enamorado Insurance CRM.
 
-**Target URL:** `https://crm.enamoradoinsurancecompany.com`  
+**Target URL:** `https://crm.enamoradoinsurancefl.com`  
 **Deploy root:** `app/` on Vercel  
 **Owner:** Joel Castillo (consultant) + Enamorado decision-maker
 
@@ -39,7 +39,7 @@ Confirm all items in [handoff/Launch-Checklist.md](../handoff/Launch-Checklist.m
 ```bash
 # Cron test (replace URL and secret)
 curl -s -H "Authorization: Bearer YOUR_CRON_SECRET" \
-  "https://crm.enamoradoinsurancecompany.com/api/cron/zapier-reminders"
+  "https://crm.enamoradoinsurancefl.com/api/cron/zapier-reminders"
 # Expect: {"follow_ups":N,"renewals":M}
 ```
 
@@ -67,7 +67,7 @@ Rollback production deploy if:
 
 > Subject: Enamorado CRM is live  
 >  
-> The CRM is available at crm.enamoradoinsurancecompany.com.  
+> The CRM is available at crm.enamoradoinsurancefl.com.  
 > Use your invited email and password to sign in.  
 > Start with Follow-ups and Pipeline each morning (see attached checklist).  
 > Questions during the first 4 hours: [on-call contact].

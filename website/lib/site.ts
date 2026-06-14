@@ -4,10 +4,10 @@ export const site = {
   tagline: 'Medicare & health insurance guidance you can trust',
   description:
     'Enamorado Insurance Company helps families and seniors navigate Medicare, Medicaid, and supplemental health coverage with clear advice and ongoing support.',
-  url: 'https://enamoradoinsurancecompany.com',
-  crmUrl: 'https://crm.enamoradoinsurancecompany.com',
+  url: 'https://enamoradoinsurancefl.com',
+  crmUrl: 'https://crm.enamoradoinsurancefl.com',
   phone: '(555) 555-0100',
-  email: 'hello@enamoradoinsurancecompany.com',
+  email: 'hello@enamoradoinsurancefl.com',
   address: {
     line1: 'Your office address',
     city: 'City',

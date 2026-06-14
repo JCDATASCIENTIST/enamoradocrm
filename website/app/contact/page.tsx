@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { site } from '@/lib/site';
+import { ContactForm } from './contact-form';
 
 export const metadata: Metadata = {
   title: 'Contact',
@@ -52,51 +53,9 @@ export default function ContactPage() {
         <div className="rounded-2xl border border-slate-200 bg-slate-50 p-8">
           <h2 className="text-lg font-semibold text-slate-900">Request a callback</h2>
           <p className="mt-2 text-sm text-slate-600">
-            This form is a placeholder. Connect it to your email provider (Resend, Formspree, Zapier) or CRM intake when ready.
+            Fill this out and a licensed agent will reach out within one business day. Prefer a phone call? Use the number on the left.
           </p>
-          <form className="mt-6 space-y-4" action="#" method="post">
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium text-slate-700">
-                Full name
-              </label>
-              <input
-                id="name"
-                name="name"
-                type="text"
-                required
-                className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20"
-              />
-            </div>
-            <div>
-              <label htmlFor="phone" className="block text-sm font-medium text-slate-700">
-                Phone
-              </label>
-              <input
-                id="phone"
-                name="phone"
-                type="tel"
-                required
-                className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20"
-              />
-            </div>
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium text-slate-700">
-                How can we help?
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                rows={4}
-                className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20"
-              />
-            </div>
-            <button
-              type="submit"
-              className="w-full rounded-lg bg-brand-600 px-4 py-3 text-sm font-semibold text-white hover:bg-brand-700"
-            >
-              Submit request
-            </button>
-          </form>
+          <ContactForm />
         </div>
       </div>
     </div>

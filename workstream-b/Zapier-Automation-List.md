@@ -57,7 +57,7 @@ Only non-PHI fields are sent. No date of birth, phone, address, email, or member
 2. Copy hook URL → Vercel env `ZAPIER_NEW_PROSPECT_WEBHOOK`
 3. **Action:** Email (Gmail/Outlook) or Slack
    - Subject: `New prospect: {{display_name}} ({{stage}})`
-   - Body: Plan type, assignee, link to CRM contact (build URL: `https://crm.enamoradoinsurancecompany.com/contacts/{{contact_id}}`)
+   - Body: Plan type, assignee, link to CRM contact (build URL: `https://crm.enamoradoinsurancefl.com/contacts/{{contact_id}}`)
 4. **Filter (optional):** Only if `stage` equals `new`
 
 ### Test procedure

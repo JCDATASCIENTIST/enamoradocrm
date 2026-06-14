@@ -22,17 +22,19 @@ interface Buckets {
 export async function getPendingFollowUps(scope: FollowUpScope = {}): Promise<Buckets> {
   const supabase = createClient();
   const today = todayInAppTz();
-  // Sunday end-of-week, computed in APP_TZ.
-  const weekdayInTz = Number(
-    new Intl.DateTimeFormat('en-US', { timeZone: APP_TZ, weekday: 'short' })
-      .formatToParts(new Date())
-      .find((p) => p.type === 'weekday')?.value
-      ? ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(
-          new Intl.DateTimeFormat('en-US', { timeZone: APP_TZ, weekday: 'short' }).format(new Date()),
-        )
-      : new Date().getDay(),
+  // Weekday in APP_TZ — 0 = Sun … 6 = Sat. The end of "this week" is the
+  // upcoming Saturday (so weekdayInTz=0 → +6d, weekdayInTz=6 → +0d).
+  const dayIndex = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(
+    new Intl.DateTimeFormat('en-US', { timeZone: APP_TZ, weekday: 'short' }).format(new Date()) as
+      | 'Sun'
+      | 'Mon'
+      | 'Tue'
+      | 'Wed'
+      | 'Thu'
+      | 'Fri'
+      | 'Sat',
   );
-  const weekEnd = dateInAppTz(6 - weekdayInTz);
+  const weekEnd = dateInAppTz(6 - (dayIndex === -1 ? new Date().getDay() : dayIndex));
 
   let query = supabase
     .from('contacts')

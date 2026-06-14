@@ -39,3 +39,20 @@ export async function getCommission(id: string) {
   if (error) throw error;
   return data as Commission | null;
 }
+
+/** Commissions attached to a single contact. Capped at 20 — the contact
+ * detail page shows "see all" if more exist. */
+export async function listCommissionsForContact(contactId: string, limit = 20) {
+  const supabase = createClient();
+  const { data, error, count } = await supabase
+    .from('commissions')
+    .select(
+      'id, carrier, policy_number, amount, status, payment_date, notes, writing_agent_id, created_at, profiles:writing_agent_id(full_name, email)',
+      { count: 'exact' },
+    )
+    .eq('contact_id', contactId)
+    .order('created_at', { ascending: false })
+    .limit(limit);
+  if (error) throw error;
+  return { rows: data ?? [], total: count ?? 0 };
+}
