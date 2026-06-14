@@ -11,7 +11,8 @@ Build a multi-page marketing website for **Enamorado Insurance Company**, an ind
 **Tone:** Warm, trustworthy, bilingual-friendly (subtle "Hola!" greeting), never pushy or salesy. Plain language. Human-first — not a generic SaaS landing page.
 
 **Visual direction:**
-- Palette: trusted medical blue `#1e3a8a` → `#2563eb`, clean slate background `#f8fafc`, bright blue accent `#1d4ed8` for CTAs and highlights
+- Follow `design-system/enamorado-insurance/MASTER.md` and `BRAND-OVERRIDE.md` in the monorepo
+- Palette: trusted navy `#0b2038` → `#2563a8`, clean slate background `#f7f9fc`, amber accent `#b45309` for CTAs
 - Typography: Fraunces (display/headlines), DM Sans (body/UI)
 - Style: editorial healthcare — soft shadows, rounded-2xl cards, subtle gradient heroes, no stock-photo clichés
 - Avoid: purple gradients, Inter-only layouts, generic "AI startup" aesthetics

@@ -31,7 +31,7 @@ export default async function PipelinePage({ searchParams }: PageProps) {
         </p>
       </div>
 
-      <div className="mb-4">
+      <div className="crm-card mb-4 p-4">
         <PipelineFilters agents={agents} />
       </div>
 

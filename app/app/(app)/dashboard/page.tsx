@@ -76,7 +76,7 @@ export default async function DashboardPage() {
           <Link
             key={card.label}
             href={card.href}
-            className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition hover:border-brand-300"
+            className="crm-card block cursor-pointer focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-600/30"
           >
             <div className="text-xs uppercase tracking-wide text-slate-500">{card.label}</div>
             <div className="mt-2 text-3xl font-semibold text-slate-900">{card.value}</div>
@@ -84,7 +84,7 @@ export default async function DashboardPage() {
         ))}
       </div>
 
-      <section className="mt-8 rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+      <section className="crm-card mt-8">
         <h2 className="text-base font-semibold text-slate-900">Quick links</h2>
         <ul className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2">
           {quickLinks.map((link) => (

@@ -10,7 +10,7 @@ const initialState: LoginState = {};
 function SubmitButton() {
   const { pending } = useFormStatus();
   return (
-    <Button type="submit" disabled={pending} className="w-full">
+    <Button type="submit" disabled={pending} size="lg" className="w-full">
       {pending ? 'Signing in…' : 'Sign in'}
     </Button>
   );
@@ -29,13 +29,13 @@ export function LoginForm({ next, prefilledError }: { next?: string; prefilledEr
     <form action={formAction} className="space-y-4">
       <input type="hidden" name="next" value={next ?? '/dashboard'} />
       <div>
-        <label htmlFor="email" className="mb-1 block text-sm font-medium text-slate-700">
+        <label htmlFor="email" className="mb-1.5 block text-base font-medium text-slate-700">
           Email
         </label>
         <Input id="email" name="email" type="email" autoComplete="email" required />
       </div>
       <div>
-        <label htmlFor="password" className="mb-1 block text-sm font-medium text-slate-700">
+        <label htmlFor="password" className="mb-1.5 block text-base font-medium text-slate-700">
           Password
         </label>
         <Input id="password" name="password" type="password" autoComplete="current-password" required />

@@ -33,7 +33,7 @@ export function MobileNav({
             width={1417}
             height={1417}
             priority
-            className="h-9 w-auto"
+            className="h-11 w-auto"
           />
         </Link>
         <button
@@ -62,7 +62,7 @@ export function MobileNav({
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
-              className="block rounded-md px-3 py-2 text-sm text-slate-700 hover:bg-slate-100"
+              className="block rounded-lg px-3 py-2.5 text-base text-slate-700 transition-colors duration-200 hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-600/30"
             >
               {item.label}
             </Link>

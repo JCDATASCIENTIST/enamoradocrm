@@ -20,7 +20,7 @@ export default function LoginPage({
           />
           <p className="mt-2 text-sm text-slate-500">Insurance CRM — sign in to continue.</p>
         </div>
-        <div className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+        <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-card">
           <LoginForm next={searchParams.next} prefilledError={searchParams.error} />
         </div>
         <p className="mt-4 text-center text-xs text-slate-400">

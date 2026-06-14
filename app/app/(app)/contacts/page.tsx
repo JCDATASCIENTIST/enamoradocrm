@@ -54,31 +54,31 @@ export default async function ContactsPage({ searchParams }: PageProps) {
         {profile.role !== 'read_only' && (
           <div className="flex items-center gap-2">
             <Link href="/contacts/import">
-              <Button variant="ghost">Import CSV</Button>
+              <Button variant="secondary">Import CSV</Button>
             </Link>
             <Link href="/contacts/new">
-              <Button>+ New contact</Button>
+              <Button size="lg">+ New contact</Button>
             </Link>
           </div>
         )}
       </div>
 
-      <div className="mt-5 rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+      <div className="crm-card mt-5 p-4">
         <ContactsFilters agents={agents} />
       </div>
 
-      <div className="mt-5 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
-        <table className="w-full text-sm">
-          <thead className="bg-slate-50 text-left text-xs uppercase tracking-wide text-slate-500">
+      <div className="mt-5 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+        <table className="w-full text-base">
+          <thead className="bg-surface-muted text-left text-xs font-semibold uppercase tracking-wide text-slate-600">
             <tr>
-              <th className="px-4 py-2">Name</th>
-              <th className="px-4 py-2">Type</th>
-              <th className="px-4 py-2">Stage</th>
-              <th className="px-4 py-2">Plan</th>
-              <th className="px-4 py-2">Age</th>
-              <th className="px-4 py-2">Assigned</th>
-              <th className="px-4 py-2">Follow-up</th>
-              <th className="px-4 py-2"></th>
+              <th className="px-4 py-3">Name</th>
+              <th className="px-4 py-3">Type</th>
+              <th className="px-4 py-3">Stage</th>
+              <th className="px-4 py-3">Plan</th>
+              <th className="px-4 py-3">Age</th>
+              <th className="px-4 py-3">Assigned</th>
+              <th className="px-4 py-3">Follow-up</th>
+              <th className="px-4 py-3"></th>
             </tr>
           </thead>
           <tbody className="divide-y divide-slate-100">
@@ -88,14 +88,14 @@ export default async function ContactsPage({ searchParams }: PageProps) {
                 ? `${formatDate(c.follow_up_date)} · ${c.follow_up_status ?? 'pending'}`
                 : '—';
               return (
-                <tr key={c.id} className="hover:bg-slate-50">
-                  <td className="px-4 py-2 font-medium text-slate-900">
-                    <Link href={`/contacts/${c.id}`} className="hover:underline">
+                <tr key={c.id} className="transition-colors duration-200 hover:bg-surface-muted">
+                  <td className="px-4 py-3 font-medium text-slate-900">
+                    <Link href={`/contacts/${c.id}`} className="text-brand-700 hover:underline focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-600/30">
                       {fullName(c)}
                     </Link>
                     {c.primary_phone && <div className="text-xs text-slate-500">{c.primary_phone}</div>}
                   </td>
-                  <td className="px-4 py-2">
+                  <td className="px-4 py-3">
                     <span
                       className={
                         c.contact_type === 'client'
@@ -106,15 +106,15 @@ export default async function ContactsPage({ searchParams }: PageProps) {
                       {c.contact_type}
                     </span>
                   </td>
-                  <td className="px-4 py-2 text-slate-600">{humanStage(c.stage)}</td>
-                  <td className="px-4 py-2 text-slate-600">{humanPlan(c.plan_type)}</td>
-                  <td className="px-4 py-2 text-slate-600">{age ?? '—'}</td>
-                  <td className="px-4 py-2 text-slate-600">
+                  <td className="px-4 py-3 text-slate-600">{humanStage(c.stage)}</td>
+                  <td className="px-4 py-3 text-slate-600">{humanPlan(c.plan_type)}</td>
+                  <td className="px-4 py-3 text-slate-600">{age ?? '—'}</td>
+                  <td className="px-4 py-3 text-slate-600">
                     {c.assigned_to ? agentLookup.get(c.assigned_to) ?? '—' : '—'}
                   </td>
-                  <td className="px-4 py-2 text-slate-600">{followLabel}</td>
-                  <td className="px-4 py-2 text-right">
-                    <Link href={`/contacts/${c.id}`} className="text-brand-600 hover:underline">
+                  <td className="px-4 py-3 text-slate-600">{followLabel}</td>
+                  <td className="px-4 py-3 text-right">
+                    <Link href={`/contacts/${c.id}`} className="inline-flex min-h-[44px] items-center font-semibold text-brand-700 hover:underline">
                       Open
                     </Link>
                   </td>
@@ -168,7 +168,7 @@ function PaginationLink({
   }
   usp.set('page', String(page));
   return (
-    <Link href={`/contacts?${usp.toString()}`} className="text-brand-600 hover:underline">
+    <Link href={`/contacts?${usp.toString()}`} className="inline-flex min-h-[44px] items-center font-semibold text-brand-700 hover:underline">
       {children}
     </Link>
   );

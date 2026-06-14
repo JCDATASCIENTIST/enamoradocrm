@@ -77,7 +77,7 @@ export default function HomePage({ params }: PageProps) {
                 alt={site.name}
                 width={800}
                 height={800}
-                className="mx-auto h-auto w-full max-w-[280px] rounded-2xl shadow-lg ring-4 ring-white/20"
+                className="mx-auto h-auto w-full max-w-[320px] rounded-2xl shadow-lg ring-4 ring-white/20 sm:max-w-[360px]"
                 priority
               />
               <div className="mt-8 text-center">

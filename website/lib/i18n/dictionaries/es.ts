@@ -33,6 +33,7 @@ export const es: Dictionary = {
     allRights: 'Todos los derechos reservados.',
     signInCrm: 'Entrar al CRM →',
     home: 'Inicio',
+    skipToContent: 'Saltar al contenido principal',
   },
   nav: {
     services: 'Servicios',

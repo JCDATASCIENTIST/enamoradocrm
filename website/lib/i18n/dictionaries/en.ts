@@ -31,6 +31,7 @@ export const en = {
     allRights: 'All rights reserved.',
     signInCrm: 'Sign in to CRM →',
     home: 'Home',
+    skipToContent: 'Skip to main content',
   },
   nav: {
     services: 'Services',

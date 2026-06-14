@@ -28,16 +28,16 @@ export function SiteHeader({ locale, dict }: SiteHeaderProps) {
       </div>
 
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
-        <Link href={localePath(locale)} className="flex items-center gap-3">
+        <Link href={localePath(locale)} className="flex min-w-0 items-center gap-3">
           <Image
             src="/enamorado-logo.jpg"
             alt={site.name}
-            width={120}
-            height={120}
-            className="h-12 w-12 rounded-full object-cover ring-2 ring-brand-200 shadow-sm"
+            width={160}
+            height={160}
+            className="h-16 w-16 shrink-0 rounded-full object-cover ring-2 ring-brand-200 shadow-sm sm:h-[4.5rem] sm:w-[4.5rem]"
             priority
           />
-          <div className="hidden sm:block">
+          <div className="hidden min-w-0 sm:block">
             <div className="font-display text-xl font-bold text-brand-900">{site.shortName}</div>
             <div className="text-sm text-slate-600">{dict.common.medicareCoverage}</div>
           </div>

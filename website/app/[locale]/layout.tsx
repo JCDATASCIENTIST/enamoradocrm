@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { MobileCallBar } from '@/components/mobile-call-bar';
+import { SkipLink } from '@/components/skip-link';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
 import { SetHtmlLang } from '@/components/set-html-lang';
@@ -32,8 +33,11 @@ export default function LocaleLayout({ children, params }: LayoutProps) {
   return (
     <>
       <SetHtmlLang locale={locale} />
+      <SkipLink label={dict.common.skipToContent} />
       <SiteHeader locale={locale} dict={dict} />
-      <main className="pb-36 md:pb-0">{children}</main>
+      <main id="main-content" className="pb-36 md:pb-0">
+        {children}
+      </main>
       <SiteFooter locale={locale} dict={dict} />
       <MobileCallBar dict={dict} />
     </>

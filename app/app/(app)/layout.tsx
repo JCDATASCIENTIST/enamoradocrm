@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { requireProfile } from '@/lib/auth/session';
 import { logout } from '@/lib/auth/actions';
+import { NavLink } from '@/components/ui/nav-link';
 import { MobileNav } from './_components/mobile-nav';
 
 export default async function AppLayout({ children }: { children: React.ReactNode }) {
@@ -24,29 +25,23 @@ export default async function AppLayout({ children }: { children: React.ReactNod
 
   return (
     <div className="flex min-h-screen">
-      <aside className="hidden w-60 flex-col border-r border-slate-200 bg-white md:flex">
+      <aside className="hidden w-64 flex-col border-r border-slate-200 bg-white md:flex">
         <div className="border-b border-slate-200 p-4">
-          <Link href="/dashboard" className="block">
+          <Link href="/dashboard" className="block focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-600/30 focus-visible:ring-offset-2">
             <Image
               src="/enamorado-logo.jpg"
               alt="Enamorado Insurance"
               width={1417}
               height={1417}
               priority
-              className="h-auto w-40"
+              className="h-auto w-44"
             />
           </Link>
-          <div className="mt-1 text-xs text-slate-500">Insurance CRM · Path B (no PHI)</div>
+          <div className="mt-2 text-xs text-slate-500">Insurance CRM · Path B (no PHI)</div>
         </div>
-        <nav className="flex-1 space-y-1 p-2">
+        <nav className="flex-1 space-y-1 p-2" aria-label="Main">
           {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="block rounded-md px-3 py-2 text-sm text-slate-700 hover:bg-slate-100"
-            >
-              {item.label}
-            </Link>
+            <NavLink key={item.href} href={item.href} label={item.label} />
           ))}
         </nav>
         <div className="border-t border-slate-200 p-3">
@@ -57,7 +52,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
           <form action={logout}>
             <button
               type="submit"
-              className="w-full rounded-md px-3 py-1.5 text-left text-sm text-slate-600 hover:bg-slate-100"
+              className="w-full rounded-lg px-3 py-2.5 text-left text-sm text-slate-600 transition-colors duration-200 hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-600/30"
             >
               Sign out
             </button>
@@ -70,7 +65,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
           userLabel={profile.full_name ?? profile.email}
           role={profile.role}
         />
-        <main className="flex-1 overflow-y-auto p-6">{children}</main>
+        <main className="flex-1 overflow-y-auto bg-surface p-6">{children}</main>
       </div>
     </div>
   );

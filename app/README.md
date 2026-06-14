@@ -1,8 +1,24 @@
 # Enamorado Insurance CRM — Application
 
-Custom CRM for Enamorado Insurance Company. **Next.js 14 (App Router) + Supabase + Tailwind.**
+Custom CRM for Enamorado Insurance Company. **Next.js 14 (App Router) + Supabase + Tailwind.**  
+Production: **crm.enamoradoinsurancecompany.com**
 
 > **HIPAA posture:** Path B (no PHI stored). See `../04-Risk-Register.md` and `../templates/Discovery-Document-Template.md` § 4.
+
+## Design source (v0)
+
+Iterate CRM **UI** in [v0.dev](https://v0.dev) and push to GitHub repo **[JCDATASCIENTIST/enamorado-insurance-crm](https://github.com/JCDATASCIENTIST/enamorado-insurance-crm)** (create on first connect).
+
+| Doc | Purpose |
+|-----|---------|
+| [design/V0-PROMPT.md](./design/V0-PROMPT.md) | Paste into v0 to generate login, shell, dashboard, pipeline |
+| [design/V0-SETUP.md](./design/V0-SETUP.md) | Connect GitHub, Vercel, merge into this monorepo |
+
+After you connect v0 → Git, add your project link here (like the website README):
+
+`Continue in v0 → (paste link from v0 project menu)`
+
+Merge v0 updates into this `app/` folder; keep `lib/`, `supabase/`, and API routes from the monorepo.
 
 ---
 
