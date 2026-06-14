@@ -1,8 +1,10 @@
 # Project status — Enamorado Insurance CRM
 
-**Last updated:** 2026-06-14 (second pass: v1 polish + domain fix)
+**Last updated:** 2026-06-14 (agent context: CLAUDE.md + .agents/skills)
 
 ## Done
+
+- **Agent context bundle:** `.agents/skills/` (6 skills from skills.zip), root `CLAUDE.md`, `AGENTS.md`, `.agents/README.md`; Happy Capy prompt now points to CLAUDE.md
 
 - Synced full project tree to GitHub repo `JCDATASCIENTIST/enamoradocrm`
 - Root README, `.gitignore`, repo layout with `app/` as Vercel root

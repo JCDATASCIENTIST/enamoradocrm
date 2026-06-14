@@ -15,14 +15,17 @@ Use this folder to configure a Happy Capy **Project** named `Enamorado Insurance
 
 | File | Use |
 |------|-----|
-| [`MASTER-PROMPT.md`](MASTER-PROMPT.md) | Paste into the first session |
-| [`sessions/`](sessions/) | Parallel session openers (Dev, Workflows, Launch, QA) |
-| [`automations/`](automations/) | Scheduled automation prompts for Happy Capy Automations panel |
+| [`../CLAUDE.md`](../CLAUDE.md) | Full project context for any AI agent |
+| [`../AGENTS.md`](../AGENTS.md) | Index of skills in `.agents/skills/` |
+| [`MASTER-PROMPT.md`](MASTER-PROMPT.md) | Short Happy Capy entry prompt (points to CLAUDE.md) |
+| [`sessions/`](sessions/) | Optional parallel session openers |
+| [`automations/`](automations/) | Optional scheduled automation prompts |
 
 ## Workflow
 
-1. Open Project → new session → paste **MASTER-PROMPT.md**
-2. Open + sessions with prompts from **sessions/**
-3. Create Automations from **automations/** (Automations → Create Automation)
+1. Clone repo into Happy Capy Project
+2. Paste **MASTER-PROMPT.md** (or point the agent at **CLAUDE.md** for full context)
+3. Agent loads skills from `.agents/skills/` as needed (see **AGENTS.md**)
+4. Optional: parallel sessions from **sessions/**; automations from **automations/**
 
-After each session, the agent should update [`STATUS.md`](../STATUS.md) at repo root.
+After each session, update [`STATUS.md`](../STATUS.md).

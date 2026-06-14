@@ -19,7 +19,9 @@ Custom CRM for **Enamorado Insurance Company** — Medicare/Medicaid agency oper
 | [`app/`](app/) | CRM application — **Vercel root** for `crm.` subdomain |
 | [`workflows/`](workflows/) | Operational runbooks (renewals, enrollments, launch) |
 | [`workstream-b/`](workstream-b/) | Commissions, renewals, Zapier specs |
-| [`happycapy/`](happycapy/) | Happy Capy.ai prompts, sessions, and automations |
+| [`CLAUDE.md`](CLAUDE.md) | AI agent project instructions (Claude Code, Cursor, etc.) |
+| [`AGENTS.md`](AGENTS.md) | Index of skills in [`.agents/skills/`](.agents/skills/) |
+| [`happycapy/`](happycapy/) | Happy Capy.ai entry prompt |
 | [`handoff/`](handoff/) | Launch, UAT, and onboarding checklists |
 | [`user-guides/`](user-guides/) | Admin and agent guides |
 | [`docs/`](docs/) | Deployment and RLS smoke tests |
@@ -43,6 +45,10 @@ See [`app/README.md`](app/README.md) for CRM setup and [`docs/deployment-domains
 
 **Path B:** No full SSN, Medicare/MBI, or Medicaid IDs. Member ID last-4 only. Zapier payloads exclude DOB, phone, email, and address. See [`workflows/HIPAA-Data-Handling-Flow.md`](workflows/HIPAA-Data-Handling-Flow.md).
 
-## Happy Capy
+## AI agents
 
-Use [`happycapy/MASTER-PROMPT.md`](happycapy/MASTER-PROMPT.md) to configure a Happy Capy Project for ongoing development and workflow work.
+| Tool | Start here |
+|------|------------|
+| Claude Code / Cursor | [`CLAUDE.md`](CLAUDE.md) + [`.agents/skills/`](.agents/skills/) |
+| Happy Capy | [`happycapy/MASTER-PROMPT.md`](happycapy/MASTER-PROMPT.md) |
+| Status after sessions | [`STATUS.md`](STATUS.md) |
