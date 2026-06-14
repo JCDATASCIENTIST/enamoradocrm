@@ -18,7 +18,7 @@ function SubmitButton({ label, pendingLabel }: { label: string; pendingLabel: st
     <button
       type="submit"
       disabled={pending}
-      className="w-full rounded-xl bg-brand-700 px-4 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-800 disabled:opacity-60"
+      className="w-full rounded-xl bg-accent-600 px-4 py-3.5 text-lg font-bold text-white shadow-sm transition-colors hover:bg-accent-500 disabled:opacity-60"
     >
       {pending ? pendingLabel : label}
     </button>
@@ -31,9 +31,9 @@ export function ContactForm({ locale, dict }: ContactFormProps) {
 
   if (state.success) {
     return (
-      <div className="rounded-2xl border border-green-200 bg-green-50 p-8 text-center">
-        <h2 className="text-lg font-semibold text-green-900">{t.successTitle}</h2>
-        <p className="mt-2 text-sm text-green-800">{t.successText}</p>
+      <div className="rounded-2xl border-2 border-green-300 bg-green-50 p-8 text-center">
+        <h2 className="text-xl font-bold text-green-900">{t.successTitle}</h2>
+        <p className="mt-2 text-base text-green-800">{t.successText}</p>
       </div>
     );
   }
@@ -42,35 +42,35 @@ export function ContactForm({ locale, dict }: ContactFormProps) {
     <form action={formAction} className="mt-6 space-y-4">
       <input type="hidden" name="locale" value={locale} />
       {state.error && (
-        <div className="rounded-md bg-red-50 px-3 py-2 text-sm text-red-700">{state.error}</div>
+        <div className="rounded-md border border-red-300 bg-red-50 px-3 py-2.5 text-base text-red-700">{state.error}</div>
       )}
       <div>
-        <label htmlFor="name" className="block text-sm font-medium text-slate-700">
+        <label htmlFor="name" className="block text-base font-semibold text-slate-800">
           {t.fullName}
         </label>
         <input id="name" name="name" type="text" required maxLength={120} className="input-field" />
       </div>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-slate-700">
+          <label htmlFor="phone" className="block text-base font-semibold text-slate-800">
             {t.phone}
           </label>
           <input id="phone" name="phone" type="tel" maxLength={40} className="input-field" />
         </div>
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-slate-700">
+          <label htmlFor="email" className="block text-base font-semibold text-slate-800">
             {t.email}
           </label>
           <input id="email" name="email" type="email" maxLength={200} className="input-field" />
         </div>
       </div>
       <div>
-        <label htmlFor="message" className="block text-sm font-medium text-slate-700">
+        <label htmlFor="message" className="block text-base font-semibold text-slate-800">
           {t.message}
         </label>
         <textarea id="message" name="message" rows={4} maxLength={2000} className="input-field" />
       </div>
-      <p className="text-xs text-slate-500">{t.phiWarning}</p>
+      <p className="text-sm leading-relaxed text-slate-600">{t.phiWarning}</p>
       <SubmitButton label={t.submit} pendingLabel={t.sending} />
     </form>
   );

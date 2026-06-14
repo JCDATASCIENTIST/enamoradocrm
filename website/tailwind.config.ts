@@ -5,25 +5,27 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Trustworthy deep navy/blue — dark shades give strong contrast for seniors
         brand: {
-          50: '#eff6ff',
-          100: '#dbeafe',
-          200: '#bfdbfe',
-          500: '#3b82f6',
-          600: '#2563eb',
-          700: '#1d4ed8',
-          800: '#1e40af',
-          900: '#1e3a8a',
+          50: '#eef4fb',
+          100: '#d6e6f7',
+          200: '#aecbed',
+          500: '#2563a8',
+          600: '#1d4f8a',
+          700: '#163d6b',
+          800: '#102e51',
+          900: '#0b2038',
         },
+        // Warm amber accent — high-contrast, friendly highlight & call-to-action color
         accent: {
-          50: '#eff6ff',
-          100: '#dbeafe',
-          500: '#2563eb',
-          600: '#1d4ed8',
+          50: '#fff5eb',
+          100: '#fde4c8',
+          500: '#d2691e',
+          600: '#b45309',
         },
         surface: {
-          DEFAULT: '#f8fafc',
-          muted: '#f1f5f9',
+          DEFAULT: '#f7f9fc',
+          muted: '#eef2f8',
         },
       },
       fontFamily: {

@@ -49,22 +49,20 @@ export default function HomePage({ params }: PageProps) {
         <TrustBar dict={dict} />
         <div className="relative mx-auto grid max-w-6xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:py-24">
           <div>
-            <p className="section-label text-brand-200">
-              {dict.site.broker.greeting} {dict.site.broker.heroLabel}
-            </p>
-            <h1 className="mt-4 font-display text-4xl font-semibold leading-[1.1] sm:text-5xl lg:text-[3.25rem]">
+            <p className="section-label text-accent-100">{dict.site.broker.heroLabel}</p>
+            <h1 className="mt-4 font-display text-4xl font-bold leading-[1.1] sm:text-5xl lg:text-[3.25rem]">
               {t.heroTitle}
             </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-brand-50/90">{dict.site.broker.intro}</p>
-            <p className="mt-4 max-w-xl text-base leading-relaxed text-brand-100/80">{dict.site.broker.trust}</p>
+            <p className="mt-6 max-w-xl text-xl leading-relaxed text-white">{dict.site.broker.intro}</p>
+            <p className="mt-4 max-w-xl text-lg leading-relaxed text-brand-100">{dict.site.broker.trust}</p>
             <div className="mt-9 flex flex-wrap gap-3">
-              <ButtonLink href={localePath(locale, '/contact')} className="bg-white text-brand-800 shadow-card hover:bg-accent-50">
+              <ButtonLink href={localePath(locale, '/contact')} className="bg-accent-600 text-white shadow-card hover:bg-accent-500">
                 {t.scheduleConsultation}
               </ButtonLink>
               <ButtonLink
                 href={localePath(locale, '/services')}
                 variant="secondary"
-                className="border-white/35 text-white hover:border-white/60 hover:bg-white/10"
+                className="border-2 border-white/50 text-white hover:border-white hover:bg-white/10"
               >
                 {t.viewServices}
               </ButtonLink>
@@ -83,9 +81,9 @@ export default function HomePage({ params }: PageProps) {
                 priority
               />
               <div className="mt-8 text-center">
-                <p className="font-display text-xl font-semibold text-white">{site.broker.name}</p>
-                <p className="mt-1 text-sm text-brand-100">{dict.site.broker.title}</p>
-                <p className="mt-4 inline-flex rounded-full bg-white/10 px-4 py-1.5 text-xs font-medium text-brand-50">
+                <p className="font-display text-2xl font-bold text-white">{site.broker.name}</p>
+                <p className="mt-1 text-base text-brand-100">{dict.site.broker.title}</p>
+                <p className="mt-4 inline-flex rounded-full bg-accent-600 px-4 py-1.5 text-sm font-semibold text-white">
                   {t.photoBadge}
                 </p>
               </div>
@@ -96,7 +94,7 @@ export default function HomePage({ params }: PageProps) {
 
       <section className="border-b border-slate-200/80 bg-white py-12">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
-          <p className="text-lg leading-relaxed text-slate-700 sm:text-xl">{dict.site.agency}</p>
+          <p className="text-xl leading-relaxed text-slate-800">{dict.site.agency}</p>
         </div>
       </section>
 
@@ -104,18 +102,18 @@ export default function HomePage({ params }: PageProps) {
         <div className="max-w-2xl">
           <p className="section-label">{t.whatWeDo}</p>
           <h2 className="section-title mt-2">{t.howWeHelp}</h2>
-          <p className="mt-4 text-lg text-slate-600">{t.howWeHelpIntro}</p>
+          <p className="mt-4 text-lg leading-relaxed text-slate-700">{t.howWeHelpIntro}</p>
         </div>
         <div className="mt-12 grid gap-5 sm:grid-cols-2">
           {t.services.map((item, index) => (
             <article key={item.title} className="card group">
               <div className="flex items-start gap-4">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-50 font-display text-sm font-semibold text-brand-700 ring-1 ring-brand-100">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-700 font-display text-base font-bold text-white">
                   {String(index + 1).padStart(2, '0')}
                 </span>
                 <div>
-                  <h3 className="text-lg font-semibold text-brand-900">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-600">{item.description}</p>
+                  <h3 className="text-xl font-bold text-brand-900">{item.title}</h3>
+                  <p className="mt-2 text-base leading-relaxed text-slate-700">{item.description}</p>
                 </div>
               </div>
             </article>
@@ -129,10 +127,10 @@ export default function HomePage({ params }: PageProps) {
           <h2 className="section-title mt-2">{t.ourProcess}</h2>
           <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
             {t.steps.map((item) => (
-              <div key={item.step} className="card border-brand-100/80">
-                <div className="text-sm font-bold text-accent-600">{item.step}</div>
-                <h3 className="mt-3 text-lg font-semibold text-slate-900">{item.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600">{item.text}</p>
+              <div key={item.step} className="card border-brand-100">
+                <div className="font-display text-2xl font-bold text-accent-600">{item.step}</div>
+                <h3 className="mt-3 text-xl font-bold text-brand-900">{item.title}</h3>
+                <p className="mt-2 text-base leading-relaxed text-slate-700">{item.text}</p>
               </div>
             ))}
           </div>
@@ -149,8 +147,8 @@ export default function HomePage({ params }: PageProps) {
         <dl className="mt-10 space-y-4">
           {t.faq.map((item) => (
             <div key={item.question} className="card">
-              <dt className="text-lg font-semibold text-brand-900">{item.question}</dt>
-              <dd className="mt-2 text-sm leading-relaxed text-slate-600">{item.answer}</dd>
+              <dt className="text-xl font-bold text-brand-900">{item.question}</dt>
+              <dd className="mt-2 text-base leading-relaxed text-slate-700">{item.answer}</dd>
             </div>
           ))}
         </dl>
@@ -160,15 +158,15 @@ export default function HomePage({ params }: PageProps) {
         <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-brand-900 to-brand-700 px-6 py-14 text-center text-white shadow-card sm:px-12">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(199,107,58,0.2),transparent_55%)]" />
           <div className="relative">
-            <h2 className="font-display text-3xl font-semibold sm:text-4xl">{t.ctaTitle}</h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-brand-100">{t.ctaText}</p>
+            <h2 className="font-display text-3xl font-bold sm:text-4xl">{t.ctaTitle}</h2>
+            <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-brand-100">{t.ctaText}</p>
             <div className="mt-9 flex flex-wrap justify-center gap-3">
-              <ButtonLink href={localePath(locale, '/contact')} className="bg-white text-brand-800 hover:bg-accent-50">
+              <ButtonLink href={localePath(locale, '/contact')} className="bg-accent-600 text-white hover:bg-accent-500">
                 {t.contactUs}
               </ButtonLink>
               <a
                 href={`tel:${site.phone.replace(/\D/g, '')}`}
-                className="inline-flex items-center justify-center rounded-xl border border-white/35 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+                className="inline-flex items-center justify-center rounded-xl border-2 border-white/50 px-5 py-3 text-base font-semibold text-white transition-colors hover:bg-white/10"
               >
                 {dict.common.call} {site.phone}
               </a>

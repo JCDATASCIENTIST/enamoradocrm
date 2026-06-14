@@ -51,36 +51,36 @@ export default function ContactPage({ params }: PageProps) {
           <div>
             <dl className="space-y-6">
               <div className="card">
-                <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500">{t.phone}</dt>
+                <dt className="text-sm font-bold uppercase tracking-wide text-slate-600">{t.phone}</dt>
                 <dd className="mt-2">
                   <a
                     href={`tel:${site.phone.replace(/\D/g, '')}`}
-                    className="text-2xl font-semibold text-brand-700 hover:underline"
+                    className="text-3xl font-bold text-brand-700 hover:underline"
                   >
                     {site.phone}
                   </a>
                 </dd>
               </div>
               <div className="card">
-                <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500">{t.email}</dt>
+                <dt className="text-sm font-bold uppercase tracking-wide text-slate-600">{t.email}</dt>
                 <dd className="mt-2">
-                  <a href={`mailto:${site.email}`} className="text-lg font-medium text-brand-700 hover:underline">
+                  <a href={`mailto:${site.email}`} className="text-xl font-semibold text-brand-700 hover:underline">
                     {site.email}
                   </a>
                 </dd>
               </div>
               <div className="card">
-                <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500">{t.office}</dt>
-                <dd className="mt-2 text-slate-700">
+                <dt className="text-sm font-bold uppercase tracking-wide text-slate-600">{t.office}</dt>
+                <dd className="mt-2 text-lg text-slate-800">
                   {site.address.line1}
                   <br />
                   {site.address.city}, {site.address.state} {site.address.zip}
                 </dd>
-                <dd className="mt-3 text-sm text-slate-500">{dict.site.hours}</dd>
+                <dd className="mt-3 text-base text-slate-600">{dict.site.hours}</dd>
               </div>
               <div className="card bg-surface-muted">
-                <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500">{t.serviceArea}</dt>
-                <dd className="mt-2 text-slate-700">{dict.site.serviceArea}</dd>
+                <dt className="text-sm font-bold uppercase tracking-wide text-slate-600">{t.serviceArea}</dt>
+                <dd className="mt-2 text-lg text-slate-800">{dict.site.serviceArea}</dd>
               </div>
             </dl>
 
@@ -88,8 +88,8 @@ export default function ContactPage({ params }: PageProps) {
           </div>
 
           <div className="card border-brand-100 bg-white p-8 shadow-card">
-            <h2 className="text-xl font-semibold text-brand-900">{t.callbackTitle}</h2>
-            <p className="mt-2 text-sm text-slate-600">{t.callbackText}</p>
+            <h2 className="text-2xl font-bold text-brand-900">{t.callbackTitle}</h2>
+            <p className="mt-2 text-base leading-relaxed text-slate-700">{t.callbackText}</p>
             <ContactForm locale={locale} dict={dict} />
           </div>
         </div>

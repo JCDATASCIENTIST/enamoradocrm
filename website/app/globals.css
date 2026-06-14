@@ -8,8 +8,9 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  /* Larger, higher-contrast base text for 65+ readers across all devices */
   body {
-    @apply bg-surface text-slate-900;
+    @apply bg-surface text-slate-800 text-[1.0625rem] leading-relaxed;
   }
 }
 
@@ -21,18 +22,18 @@
 
 @layer components {
   .section-label {
-    @apply text-xs font-semibold uppercase tracking-[0.18em] text-brand-600;
+    @apply text-sm font-bold uppercase tracking-[0.14em] text-accent-600;
   }
 
   .section-title {
-    @apply font-display text-3xl font-semibold text-brand-900 sm:text-4xl;
+    @apply font-display text-3xl font-bold text-brand-900 sm:text-4xl;
   }
 
   .card {
-    @apply rounded-2xl border border-slate-200/80 bg-white p-6 shadow-soft transition-shadow hover:shadow-card;
+    @apply rounded-2xl border border-slate-200 bg-white p-6 shadow-soft transition-shadow hover:shadow-card;
   }
 
   .input-field {
-    @apply mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm transition-colors focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20;
+    @apply mt-1.5 w-full rounded-xl border-2 border-slate-300 bg-white px-3.5 py-3 text-base text-slate-900 transition-colors focus:border-brand-600 focus:outline-none focus:ring-2 focus:ring-brand-600/25;
   }
 }

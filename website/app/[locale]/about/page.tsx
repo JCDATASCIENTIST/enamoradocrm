@@ -43,23 +43,23 @@ export default function AboutPage({ params }: PageProps) {
         ]}
       />
       <PageHero
-        label={`${dict.site.broker.greeting} ${dict.about.label}`}
+        label={dict.about.label}
         title={site.broker.name}
         description={`${dict.site.broker.title} · ${dict.site.serviceArea}`}
       />
 
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
         <div className="max-w-3xl">
-          <p className="text-lg leading-relaxed text-slate-600">{dict.site.broker.intro}</p>
-          <p className="mt-4 leading-relaxed text-slate-600">{dict.site.broker.trust}</p>
-          <p className="mt-4 leading-relaxed text-slate-600">{dict.site.agency}</p>
+          <p className="text-xl leading-relaxed text-slate-800">{dict.site.broker.intro}</p>
+          <p className="mt-4 text-lg leading-relaxed text-slate-700">{dict.site.broker.trust}</p>
+          <p className="mt-4 text-lg leading-relaxed text-slate-700">{dict.site.agency}</p>
         </div>
 
         <div className="mt-14 grid gap-5 md:grid-cols-3">
           {dict.about.values.map((item) => (
             <article key={item.title} className="card">
-              <h2 className="text-lg font-semibold text-brand-900">{item.title}</h2>
-              <p className="mt-3 text-sm leading-relaxed text-slate-600">{item.text}</p>
+              <h2 className="text-xl font-bold text-brand-900">{item.title}</h2>
+              <p className="mt-3 text-base leading-relaxed text-slate-700">{item.text}</p>
             </article>
           ))}
         </div>

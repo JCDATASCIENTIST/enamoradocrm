@@ -1,6 +1,10 @@
 # Enamorado Insurance — Marketing Website
 
-Public marketing site for **enamoradoinsurancefl.com**. The CRM lives separately at **crm.enamoradoinsurancefl.com** (`../app/`).
+Public marketing site for **enamoradoinsurancecompany.com**. The CRM lives separately at **crm.enamoradoinsurancecompany.com** (`../app/`).
+
+## Design source (v0)
+
+UI and layout are synced from the standalone v0 project repo [JCDATASCIENTIST/enamorado-insurance-website](https://github.com/JCDATASCIENTIST/enamorado-insurance-website). Continue design work in [v0 →](https://v0.app/chat/projects/prj_QXBjcbiQcaV6gvPZD8VWq9RwMAjL); merge updates into this monorepo `website/` folder (preserve `.env.local.example` and this README).
 
 ## Stack
 
@@ -53,7 +57,7 @@ Use a **separate Vercel project** from the CRM:
 
 | Project | Root directory | Domain |
 |---------|----------------|--------|
-| Enamorado Website | `website` | `enamoradoinsurancefl.com`, `www` |
-| Enamorado CRM | `app` | `crm.enamoradoinsurancefl.com` |
+| Enamorado Website | `website` | `enamoradoinsurancecompany.com`, `www` |
+| Enamorado CRM | `app` | `crm.enamoradoinsurancecompany.com` |
 
 See [../docs/deployment-domains.md](../docs/deployment-domains.md) for SiteGround DNS records.

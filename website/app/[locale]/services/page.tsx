@@ -49,12 +49,12 @@ export default function ServicesPage({ params }: PageProps) {
         <div className="grid gap-5 md:grid-cols-2">
           {t.offerings.map((item) => (
             <article key={item.title} className="card">
-              <h2 className="text-xl font-semibold text-brand-900">{item.title}</h2>
-              <ul className="mt-4 space-y-2.5 text-sm text-slate-600">
+              <h2 className="text-2xl font-bold text-brand-900">{item.title}</h2>
+              <ul className="mt-4 space-y-3 text-base text-slate-700">
                 {item.bullets.map((bullet) => (
                   <li key={bullet} className="flex gap-3">
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-500" />
-                    <span>{bullet}</span>
+                    <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-accent-600" />
+                    <span className="leading-relaxed">{bullet}</span>
                   </li>
                 ))}
               </ul>
@@ -62,12 +62,12 @@ export default function ServicesPage({ params }: PageProps) {
           ))}
         </div>
 
-        <div className="card mt-14 border-brand-100 bg-brand-50/50">
-          <h2 className="text-xl font-semibold text-brand-900">{t.staffTitle}</h2>
-          <p className="mt-2 text-sm text-slate-600">{t.staffText}</p>
+        <div className="card mt-14 border-brand-100 bg-brand-50">
+          <h2 className="text-2xl font-bold text-brand-900">{t.staffTitle}</h2>
+          <p className="mt-2 text-base leading-relaxed text-slate-700">{t.staffText}</p>
           <Link
             href={`${site.crmUrl}/login`}
-            className="mt-4 inline-flex text-sm font-semibold text-brand-700 hover:text-brand-900"
+            className="mt-4 inline-flex text-base font-semibold text-brand-700 hover:text-brand-900"
           >
             {dict.common.signInCrm}
           </Link>
